@@ -1,11 +1,19 @@
-const operation = document.querySelector('[operation]');
-const operationResult = document.querySelector('[operationResult]');
-
 let result = '';
-let currentOperation = '';
-
 let operator = undefined;
+let currentOperation = '';
 let prevOperator = undefined;
+
+
+const del = document.getElementById('delete');
+const equals = document.getElementById('equals');
+const allClear = document.getElementById('allClear');
+
+const numbers = document.querySelectorAll('.number');
+const operators = document.querySelectorAll('.operation');
+
+const operation = document.getElementById('currentOperation');
+const operationResult = document.getElementById('operationResult');
+
 
 function updateDisplay() {
     operation.innerHTML = currentOperation;
@@ -36,9 +44,9 @@ function compute() {
     result = computation;
 }
 
+
 /* --Get Numbers Buttons List-- */
-document.querySelectorAll('[number]')
-.forEach(button => {
+numbers.forEach(button => {
     /* --Add Listener to Buttons-- */
     button.addEventListener('click', () => { 
         
@@ -51,8 +59,7 @@ document.querySelectorAll('[number]')
 }); 
 
 /* --Get Operator Buttons List-- */
-document.querySelectorAll('[operation]')
-.forEach(button => {
+operators.forEach(button => {
     /* --Add Listener to Buttons-- */
     button.addEventListener('click', () => {
 
@@ -79,23 +86,20 @@ document.querySelectorAll('[operation]')
     });
 });
 
-document.querySelector('[equals]')
-.addEventListener('click', () => {
+equals.addEventListener('click', () => {
     compute();
     updateDisplay();
-})
+});
 
-document.querySelector('[allClear]')
-.addEventListener('click', () => {
+allClear.addEventListener('click', () => {
     result = '';
     operator = undefined;
     currentOperation = '';
     prevOperator = undefined;
     updateDisplay();
-})
+});
 
-document.querySelector('[delete]')
-.addEventListener('click', () => {
+del.addEventListener('click', () => {
     currentOperation = currentOperation.toString().slice(0, -1);
     updateDisplay();
-})
+});
