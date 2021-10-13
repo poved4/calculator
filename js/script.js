@@ -21,7 +21,6 @@ function updateDisplay() {
 }
 
 function compute() {
-
     let computation;
     const z = prevOperator === undefined ? operator : prevOperator;
     let numbers = currentOperation.split(z);
